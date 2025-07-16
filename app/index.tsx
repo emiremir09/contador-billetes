@@ -8,6 +8,7 @@ import {
   Pressable,
   KeyboardAvoidingView,
   Platform,
+  SafeAreaView,
 } from "react-native";
 
 import ParallaxScrollView from "@/components/ParallaxScrollView";
@@ -65,14 +66,11 @@ export default function HomeScreen() {
   }; */
 
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
-      headerImage={
-        <Image
-          source={require("@/assets/images/billetes.jpg")}
-          style={styles.reactLogo}
-        />
-      }
+    <SafeAreaView
+      style={[
+        styles.container,
+        /* { backgroundColor: colorTheme === "light" ? "white" : "black" }, */
+      ]}
     >
       <KeyboardAvoidingView
         style={{ flex: 1 }}
@@ -90,7 +88,7 @@ export default function HomeScreen() {
           </ThemedText>
         </View>
 
-        <ThemedView style={styles.container}>
+        <ThemedView style={styles.containerBody}>
           <ScrollView>
             {denominations.map((denomination, index) => (
               <View key={denomination} style={styles.denominationRow}>
@@ -141,14 +139,19 @@ export default function HomeScreen() {
           </ScrollView>
         </ThemedView>
       </KeyboardAvoidingView>
-    </ParallaxScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  containerBody: {
+    alignSelf: "center",
+    width: "95%",
     padding: 10,
+    borderRadius: 10,
   },
   titleContainer: {
     //flex: 1,
@@ -187,7 +190,7 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
     padding: 8,
     borderRadius: 4,
-    flex: 0.8,
+    flex: 0.5,
     marginHorizontal: 10,
     backgroundColor: "#FCF8FF",
   },
