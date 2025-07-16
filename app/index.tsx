@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
-  Image,
-  StyleSheet,
-  View,
-  TextInput,
-  ScrollView,
-  Pressable,
   KeyboardAvoidingView,
   Platform,
+  Pressable,
   SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  TextInput,
+  View,
 } from "react-native";
 
-import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 
@@ -66,12 +64,7 @@ export default function HomeScreen() {
   }; */
 
   return (
-    <SafeAreaView
-      style={[
-        styles.container,
-        /* { backgroundColor: colorTheme === "light" ? "white" : "black" }, */
-      ]}
-    >
+    <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -89,7 +82,7 @@ export default function HomeScreen() {
         </View>
 
         <ThemedView style={styles.containerBody}>
-          <ScrollView>
+          <ScrollView style={styles.scrollviewBody}>
             {denominations.map((denomination, index) => (
               <View key={denomination} style={styles.denominationRow}>
                 <ThemedText style={styles.denominationLabel}>
@@ -158,6 +151,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingHorizontal: 15,
+  },
+  scrollviewBody: {
+    marginBottom: 55,
   },
   stepContainer: {
     gap: 8,
